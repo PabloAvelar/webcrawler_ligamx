@@ -1,6 +1,18 @@
 import cloudscraper
 from bs4 import BeautifulSoup
 import time
+import unicodedata
+
+def clean_string(string):
+    # Limpiar la cadena de caracteres
+
+    string = string.replace(".", "")
+    string = string.replace(" ", "_")
+
+    normalized_string = unicodedata.normalize('NFKD', string)
+    string = normalized_string.encode('ASCII', 'ignore').decode('ASCII')
+    
+    return string
 
 def getPlayers(url, team):
     print(url)
@@ -27,6 +39,8 @@ def getPlayers(url, team):
     rendimiento = []
     por_90_minutos = []
     pertenece_a = []
+
+    print(f"EQUIPO: {team}")
     
     for player_row in tbody_tr:
         player_str = ''
@@ -36,11 +50,7 @@ def getPlayers(url, team):
             player_str += player_name.text + ","
             player_str = player_str.lower()
             
-            player_str = player_str.replace(".", "")
-            player_str = player_str.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
-            player_str = player_str.replace("ñ", "n")
-            player_str = player_str.replace("ü", "u")
-            
+            player_str = clean_string(player_str)
 
         for player_data in player_row.find_all('td')[:-1]:
             data = player_data.text.split(" ")
@@ -55,18 +65,22 @@ def getPlayers(url, team):
             if data == '':
                 is_null_value = True 
                 break
-            player_str += data + ","
 
             if is_null_value:
                 break
+            
+            data = data.lower()
+            data = clean_string(data)
+            player_str += data + ","
 
         # Lista de los datos de la fila del jugador
         player_list = player_str.split(",")
         player_list[0] = player_list[0].replace(" ", "_").lower()
 
-        #generar hechos de prolog
-        print(f"EQUIPO: {team}")
+        team = team.lower()
+        team = clean_string(team)
 
+        #generar hechos de prolog
         try:
             jugador.append(f"jugador({player_list[0]}, {player_list[1]}, {player_list[2]}, {player_list[3]}).")
 
@@ -76,7 +90,7 @@ def getPlayers(url, team):
 
             por_90_minutos.append(f"por_90_minutos({player_list[0]}, {player_list[16]}, {player_list[17]}, {player_list[18]}, {player_list[19]}, {player_list[20]}).")
 
-            pertenece_a.append(f"pertenece_a({player_list[0]}, {team.lower().replace(' ', '_')}).")
+            pertenece_a.append(f"pertenece_a({player_list[0]}, {team}).")
         except IndexError:
             pass
 
