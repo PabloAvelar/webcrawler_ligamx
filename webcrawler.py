@@ -34,6 +34,13 @@ def getPlayers(url, team):
 
         for player_name in player_row.find_all('th'):
             player_str += player_name.text + ","
+            player_str = player_str.lower()
+            
+            player_str = player_str.replace(".", "")
+            player_str = player_str.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
+            player_str = player_str.replace("ñ", "n")
+            player_str = player_str.replace("ü", "u")
+            
 
         for player_data in player_row.find_all('td')[:-1]:
             data = player_data.text.split(" ")
