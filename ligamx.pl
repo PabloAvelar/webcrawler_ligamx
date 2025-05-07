@@ -1,3 +1,5 @@
+:-style_check(-discontiguous).
+
 jugador(kevin_mier, col, po, 24).
 jugador(willer_ditta, col, df, 28).
 jugador(carlos_rotondi, arg, df, 28).
@@ -2820,7 +2822,7 @@ jugador(kevin_rosero, col, df, 26).
 jugador(alan_montes, mex, df, 24).
 jugador(jose_ivan_rodriguez, mex, cc, 28).
 jugador(ricardo_monreal, mex, dl, 24).
-jugador(fernando_arce_jr., usa, cc, 28).
+jugador(fernando_arce_jr, usa, cc, 28).
 jugador(heriberto_jurado, mex, df, 20).
 jugador(bryan_garnica, mex, dl, 28).
 jugador(pavel_perez, mex, cc, 26).
@@ -2861,7 +2863,7 @@ tiempo_jugado(kevin_rosero, 29, 17, 1507, 16.7).
 tiempo_jugado(alan_montes, 20, 14, 1413, 15.7).
 tiempo_jugado(jose_ivan_rodriguez, 15, 14, 1226, 13.6).
 tiempo_jugado(ricardo_monreal, 31, 14, 1212, 13.5).
-tiempo_jugado(fernando_arce_jr., 15, 12, 1036, 11.5).
+tiempo_jugado(fernando_arce_jr, 15, 12, 1036, 11.5).
 tiempo_jugado(heriberto_jurado, 16, 12, 941, 10.5).
 tiempo_jugado(bryan_garnica, 15, 11, 1002, 11.1).
 tiempo_jugado(pavel_perez, 16, 10, 855, 9.5).
@@ -2902,7 +2904,7 @@ rendimiento(kevin_rosero, 2, 4, 6, 2, 0, 0, 5, 0).
 rendimiento(alan_montes, 2, 0, 2, 2, 0, 0, 6, 0).
 rendimiento(jose_ivan_rodriguez, 1, 0, 1, 1, 0, 0, 2, 0).
 rendimiento(ricardo_monreal, 2, 1, 3, 2, 0, 0, 3, 0).
-rendimiento(fernando_arce_jr., 2, 0, 2, 2, 0, 0, 5, 0).
+rendimiento(fernando_arce_jr, 2, 0, 2, 2, 0, 0, 5, 0).
 rendimiento(heriberto_jurado, 0, 0, 0, 0, 0, 0, 0, 0).
 rendimiento(bryan_garnica, 0, 0, 0, 0, 0, 0, 1, 1).
 rendimiento(pavel_perez, 4, 1, 5, 4, 0, 0, 1, 0).
@@ -2943,7 +2945,7 @@ expectativa(kevin_rosero, 0.9, 0.9, 1.5, 2.4).
 expectativa(alan_montes, 1.7, 1.7, 0.2, 1.8).
 expectativa(jose_ivan_rodriguez, 0.2, 0.2, 0.3, 0.5).
 expectativa(ricardo_monreal, 2.1, 2.1, 2.5, 4.6).
-expectativa(fernando_arce_jr., 1.8, 1.8, 0.3, 2.1).
+expectativa(fernando_arce_jr, 1.8, 1.8, 0.3, 2.1).
 expectativa(heriberto_jurado, 0.3, 0.3, 1.7, 2.0).
 expectativa(bryan_garnica, 0.2, 0.2, 1.5, 1.7).
 expectativa(pavel_perez, 1.3, 1.3, 1.4, 2.7).
@@ -2984,7 +2986,7 @@ progresion(kevin_rosero, 44, 23, 95).
 progresion(alan_montes, 4, 31, 3).
 progresion(jose_ivan_rodriguez, 7, 80, 13).
 progresion(ricardo_monreal, 25, 31, 92).
-progresion(fernando_arce_jr., 7, 32, 8).
+progresion(fernando_arce_jr, 7, 32, 8).
 progresion(heriberto_jurado, 25, 17, 54).
 progresion(bryan_garnica, 17, 50, 70).
 progresion(pavel_perez, 38, 46, 50).
@@ -3025,7 +3027,7 @@ por_90_minutos(kevin_rosero, 0.12, 0.24, 0.36, 0.12, 0.36, 0.05, 0.09, 0.14, 0.0
 por_90_minutos(alan_montes, 0.13, 0.00, 0.13, 0.13, 0.13, 0.11, 0.01, 0.12, 0.11, 0.12).
 por_90_minutos(jose_ivan_rodriguez, 0.07, 0.00, 0.07, 0.07, 0.07, 0.01, 0.02, 0.04, 0.01, 0.04).
 por_90_minutos(ricardo_monreal, 0.15, 0.07, 0.22, 0.15, 0.22, 0.16, 0.19, 0.35, 0.16, 0.35).
-por_90_minutos(fernando_arce_jr., 0.17, 0.00, 0.17, 0.17, 0.17, 0.16, 0.03, 0.18, 0.16, 0.18).
+por_90_minutos(fernando_arce_jr, 0.17, 0.00, 0.17, 0.17, 0.17, 0.16, 0.03, 0.18, 0.16, 0.18).
 por_90_minutos(heriberto_jurado, 0.00, 0.00, 0.00, 0.00, 0.00, 0.03, 0.16, 0.19, 0.03, 0.19).
 por_90_minutos(bryan_garnica, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.14, 0.15, 0.01, 0.15).
 por_90_minutos(pavel_perez, 0.42, 0.11, 0.53, 0.42, 0.53, 0.13, 0.15, 0.28, 0.13, 0.28).
@@ -3066,7 +3068,7 @@ pertenece_a(kevin_rosero, necaxa).
 pertenece_a(alan_montes, necaxa).
 pertenece_a(jose_ivan_rodriguez, necaxa).
 pertenece_a(ricardo_monreal, necaxa).
-pertenece_a(fernando_arce_jr., necaxa).
+pertenece_a(fernando_arce_jr, necaxa).
 pertenece_a(heriberto_jurado, necaxa).
 pertenece_a(bryan_garnica, necaxa).
 pertenece_a(pavel_perez, necaxa).
@@ -4480,7 +4482,7 @@ jugador(lucas_cavallini, can, dl, 32).
 jugador(angel_robles, mex, cc, 23).
 jugador(cristian_mares, mex, dl, 20).
 jugador(bryan_garnica, mex, dl, 28).
-jugador(fernando_arce_jr., usa, cc, 28).
+jugador(fernando_arce_jr, usa, cc, 28).
 jugador(jair_gonzalez, mex, cc, 23).
 jugador(rafael_duran, mex, cc, 27).
 jugador(luis_garcia, mex, cc, 32).
@@ -4520,7 +4522,7 @@ tiempo_jugado(lucas_cavallini, 4, 4, 328, 3.6).
 tiempo_jugado(angel_robles, 10, 3, 240, 2.7).
 tiempo_jugado(cristian_mares, 8, 2, 202, 2.2).
 tiempo_jugado(bryan_garnica, 8, 1, 210, 2.3).
-tiempo_jugado(fernando_arce_jr., 6, 1, 197, 2.2).
+tiempo_jugado(fernando_arce_jr, 6, 1, 197, 2.2).
 tiempo_jugado(jair_gonzalez, 9, 0, 170, 1.9).
 tiempo_jugado(rafael_duran, 8, 0, 151, 1.7).
 tiempo_jugado(luis_garcia, 7, 0, 117, 1.3).
@@ -4560,7 +4562,7 @@ rendimiento(lucas_cavallini, 4, 0, 4, 2, 2, 2, 1, 0).
 rendimiento(angel_robles, 0, 0, 0, 0, 0, 0, 0, 0).
 rendimiento(cristian_mares, 0, 0, 0, 0, 0, 0, 1, 0).
 rendimiento(bryan_garnica, 0, 0, 0, 0, 0, 0, 0, 0).
-rendimiento(fernando_arce_jr., 0, 0, 0, 0, 0, 0, 2, 0).
+rendimiento(fernando_arce_jr, 0, 0, 0, 0, 0, 0, 2, 0).
 rendimiento(jair_gonzalez, 0, 0, 0, 0, 0, 0, 0, 0).
 rendimiento(rafael_duran, 1, 0, 1, 1, 0, 0, 0, 0).
 rendimiento(luis_garcia, 0, 0, 0, 0, 0, 0, 0, 0).
@@ -4600,7 +4602,7 @@ expectativa(lucas_cavallini, 3.4, 1.9, 0.4, 2.3).
 expectativa(angel_robles, 1.4, 1.4, 0.0, 1.4).
 expectativa(cristian_mares, 0.4, 0.4, 0.0, 0.4).
 expectativa(bryan_garnica, 0.2, 0.2, 0.1, 0.3).
-expectativa(fernando_arce_jr., 0.1, 0.1, 0.0, 0.1).
+expectativa(fernando_arce_jr, 0.1, 0.1, 0.0, 0.1).
 expectativa(jair_gonzalez, 0.1, 0.1, 0.3, 0.4).
 expectativa(rafael_duran, 0.5, 0.5, 0.2, 0.6).
 expectativa(luis_garcia, 0.0, 0.0, 0.6, 0.6).
@@ -4640,7 +4642,7 @@ progresion(lucas_cavallini, 2, 5, 17).
 progresion(angel_robles, 1, 4, 6).
 progresion(cristian_mares, 3, 3, 15).
 progresion(bryan_garnica, 6, 2, 17).
-progresion(fernando_arce_jr., 2, 2, 3).
+progresion(fernando_arce_jr, 2, 2, 3).
 progresion(jair_gonzalez, 7, 12, 21).
 progresion(rafael_duran, 2, 3, 6).
 progresion(luis_garcia, 6, 2, 11).
@@ -4680,7 +4682,7 @@ por_90_minutos(lucas_cavallini, 1.10, 0.00, 1.10, 0.55, 0.55, 0.95, 0.11, 1.06, 
 por_90_minutos(angel_robles, 0.00, 0.00, 0.00, 0.00, 0.00, 0.52, 0.00, 0.53, 0.52, 0.53).
 por_90_minutos(cristian_mares, 0.00, 0.00, 0.00, 0.00, 0.00, 0.17, 0.01, 0.18, 0.17, 0.18).
 por_90_minutos(bryan_garnica, 0.00, 0.00, 0.00, 0.00, 0.00, 0.07, 0.04, 0.11, 0.07, 0.11).
-por_90_minutos(fernando_arce_jr., 0.00, 0.00, 0.00, 0.00, 0.00, 0.03, 0.00, 0.03, 0.03, 0.03).
+por_90_minutos(fernando_arce_jr, 0.00, 0.00, 0.00, 0.00, 0.00, 0.03, 0.00, 0.03, 0.03, 0.03).
 por_90_minutos(jair_gonzalez, 0.00, 0.00, 0.00, 0.00, 0.00, 0.06, 0.14, 0.20, 0.06, 0.20).
 por_90_minutos(rafael_duran, 0.60, 0.00, 0.60, 0.60, 0.60, 0.27, 0.09, 0.36, 0.27, 0.36).
 por_90_minutos(luis_garcia, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.44, 0.44, 0.00, 0.44).
@@ -4720,7 +4722,7 @@ pertenece_a(lucas_cavallini, puebla).
 pertenece_a(angel_robles, puebla).
 pertenece_a(cristian_mares, puebla).
 pertenece_a(bryan_garnica, puebla).
-pertenece_a(fernando_arce_jr., puebla).
+pertenece_a(fernando_arce_jr, puebla).
 pertenece_a(jair_gonzalez, puebla).
 pertenece_a(rafael_duran, puebla).
 pertenece_a(luis_garcia, puebla).
