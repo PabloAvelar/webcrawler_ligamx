@@ -6,8 +6,9 @@ import unicodedata
 def clean_string(string):
     # Limpiar la cadena de caracteres
 
-    string = string.replace(".", "")
     string = string.replace(" ", "_")
+    string = string.replace(",", "")  # Eliminar comas para cantidades numericas
+    string = string.split("-")[0]  # Eliminar el guión de la edad del jugador
 
     normalized_string = unicodedata.normalize('NFKD', string)
     string = normalized_string.encode('ASCII', 'ignore').decode('ASCII')
@@ -15,6 +16,7 @@ def clean_string(string):
     return string
 
 def getPlayers(url, team):
+    print(f"EQUIPO: {team}")
     print(url)
 
     scraper = cloudscraper.create_scraper()
@@ -32,69 +34,75 @@ def getPlayers(url, team):
     tbody = table.find_all('tbody')[0]
     tbody_tr = tbody.find_all('tr')
 
-    print("JUGADORES!!!!!!")
-
     jugador = []
     tiempo_jugado = []
     rendimiento = []
+    expectativa = []
+    progresion = []
     por_90_minutos = []
     pertenece_a = []
 
-    print(f"EQUIPO: {team}")
-    
+    player_list = []
+
     for player_row in tbody_tr:
         player_str = ''
-        is_null_value = False
+        player = {}
 
-        for player_name in player_row.find_all('th'):
-            player_str += player_name.text + ","
+        # Obtener el nombre del jugador desde el <th>
+        player_name_tag = player_row.find('th', {'data-stat': 'player'})
+        if player_name_tag:
+            player_str = player_name_tag.get_text(strip=True)
             player_str = player_str.lower()
-            
             player_str = clean_string(player_str)
 
-        for player_data in player_row.find_all('td')[:-1]:
-            data = player_data.text.split(" ")
+        player['player'] = player_str
+        print(player_str)
 
-            # Limpiando el dato actual
-            data = data[1] if len(data) > 1 else data[0]  # Eliminando la nacionalidad repetida
-            data = data.split("-")[0]  # Eliminando el guión de la edad del jugador
-            
-            
-            # Checando si hay datos nulos.
-            # Si hay datos nulos, esa fila se elimina y el jugador también.
-            if data == '':
-                is_null_value = True 
+        # Obtener todos los datos desde los <td> con data-stat
+        for data_cell in player_row.find_all('td', attrs={'data-stat': True}):
+            stat = data_cell['data-stat']
+            if stat == 'matches':
                 break
+            print(stat)
+            data = data_cell.get_text(strip=True)
 
-            if is_null_value:
-                break
-            
+            # Recuperando la nacionalidad en tres letras
+            if stat == 'nationality':
+                data = data[2:]  # Eliminando la nacionalidad repetida
+
+            if stat == 'position':
+                data = data.split(",")[0]  # Seleccionando la posición principal
+
             data = data.lower()
             data = clean_string(data)
-            player_str += data + ","
 
-        # Lista de los datos de la fila del jugador
-        player_list = player_str.split(",")
-        player_list[0] = player_list[0].replace(" ", "_").lower()
+            player[stat] = data if data else '0'
+
+        player_list.append(player)
 
         team = team.lower()
         team = clean_string(team)
 
         #generar hechos de prolog
         try:
-            jugador.append(f"jugador({player_list[0]}, {player_list[1]}, {player_list[2]}, {player_list[3]}).")
+            jugador.append(f"jugador({player['player']}, {player['nationality']}, {player['position']}, {player['age']}).")
 
-            tiempo_jugado.append(f"tiempo_jugado({player_list[0]}, {player_list[4]}, {player_list[5]}, {player_list[6]}, {player_list[7]}).")
-            
-            rendimiento.append(f"rendimiento({player_list[0]}, {player_list[8]}, {player_list[9]}, {player_list[10]}, {player_list[11]}, {player_list[12]}, {player_list[13]}, {player_list[14]}, {player_list[15]}).")
+            tiempo_jugado.append(f"tiempo_jugado({player['player']}, {player['games']}, {player['games_starts']}, {player['minutes']}, {player['minutes_90s']}).")
 
-            por_90_minutos.append(f"por_90_minutos({player_list[0]}, {player_list[16]}, {player_list[17]}, {player_list[18]}, {player_list[19]}, {player_list[20]}).")
+            rendimiento.append(f"rendimiento({player['player']}, {player['goals']}, {player['assists']}, {player['goals_assists']}, {player['goals_pens']}, {player['pens_made']}, {player['pens_att']}, {player['cards_yellow']}, {player['cards_red']}).")
 
-            pertenece_a.append(f"pertenece_a({player_list[0]}, {team}).")
+            expectativa.append(f"expectativa({player['player']}, {player['xg']}, {player['npxg']}, {player['xg_assist']}, {player['npxg_xg_assist']}).")
+
+            progresion.append(f"progresion({player['player']}, {player['progressive_carries']}, {player['progressive_passes']}, {player['progressive_passes_received']}).")
+
+            por_90_minutos.append(f"por_90_minutos({player['player']}, {player['goals_per90']}, {player['assists_per90']}, {player['goals_assists_per90']}, {player['goals_pens_per90']}, {player['goals_assists_pens_per90']}, {player['xg_per90']}, {player['xg_assist_per90']}, {player['xg_xg_assist_per90']}, {player['npxg_per90']}, {player['npxg_xg_assist_per90']}).")
+
+            pertenece_a.append(f"pertenece_a({player['player']}, {team}).")
+
         except IndexError:
             pass
 
-    return [jugador, tiempo_jugado, rendimiento, por_90_minutos, pertenece_a]
+    return [jugador, tiempo_jugado, rendimiento, expectativa, progresion, por_90_minutos, pertenece_a]
 
 def save_facts(*args):
     file = open('ligamx.pl', 'a', encoding='utf-8')
